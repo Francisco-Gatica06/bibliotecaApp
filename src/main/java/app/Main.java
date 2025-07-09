@@ -14,7 +14,7 @@ public class Main {
             Menu menu = new Menu(conn);
             menu.iniciar();
         } catch (SQLException e) {
-            System.out.println("❌ Error al conectar: " + e.getMessage());
+            System.out.println("Error al conectar: " + e.getMessage());
         }
     }
 }

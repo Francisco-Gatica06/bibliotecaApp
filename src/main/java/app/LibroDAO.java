@@ -16,7 +16,7 @@ public class LibroDAO {
     public void agregarLibro(Libro libro) throws SQLException {
         String sql = "INSERT INTO Libro (isbn, titulo, anio_publicacion, disponible) VALUES (?, ?, ?, ?)";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            conn.setAutoCommit(false); // Comienza la transacción
+            conn.setAutoCommit(false);
 
             stmt.setString(1, libro.getIsbn());
             stmt.setString(2, libro.getTitulo());
@@ -24,9 +24,9 @@ public class LibroDAO {
             stmt.setBoolean(4, libro.isDisponible());
 
             stmt.executeUpdate();
-            conn.commit(); // Confirmar la transacción
+            conn.commit();
         } catch (SQLException e) {
-            conn.rollback(); // Deshacer cambios si hay error
+            conn.rollback();
             throw e;
         } finally {
             conn.setAutoCommit(true);
